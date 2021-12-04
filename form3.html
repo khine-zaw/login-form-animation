@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form Design III</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    <style>
+        .container{
+            position: relative;
+            margin-left: 20%;
+            padding-top: 50px;
+        }
+        .card{
+            backface-visibility: hidden;
+            width: 600px;
+            height: 500px;
+            margin: auto;
+            border-radius: 7px;
+            text-align: center;
+            padding-top: 20px;
+            transition: all 3s;
+            position: absolute;
+            background-image: linear-gradient(to right, rgba(113, 238, 221, 0), rgba(243, 239, 19, 0.966));
+        }
+        #form1{
+            transform: rotateY( 0deg );
+        }
+        #form2{
+            transform: rotateY( 180deg );
+        }
+        .login-form{
+            transform: rotateY( 0deg ) !important;
+        }
+        .register-form{
+            transform: rotateY( 180deg ) !important;
+        }
+
+        input[type=text],input[type=password]{
+            padding: 15px 10px;
+            margin:4px;
+            width: 250px;
+            padding-left:60px;
+            border-radius: 20px;
+            background-color: #f5ebeb;
+            border: none;
+            align-items: center;
+            outline: none;
+        }
+        input[type=text],input[type=password]::placeholder{
+            font-family: FontAwesome;
+        }
+        .inside-icon{
+            position: relative;
+            margin-bottom: 10px;    
+        }
+        .eye{
+            position: relative;    
+        }
+        .eye i{
+            position: absolute;
+            margin-top: -9%;
+            margin-left: 45%;
+            color: rgb(158, 149, 149);
+        }
+        .inside-icon i{
+            position: absolute;
+            left:25%;
+            top:6px;
+            padding:10px 10px;
+            font-size: 20px;
+            color: rgb(158, 149, 149);
+        }
+        input[type=button]{
+            width: 330px;
+            padding: 15px 20px;
+            margin-top: 15px;
+            color: white;
+            background-color: rgb(86, 100, 230);
+            background-image: linear-gradient(to right,rgb(125, 163, 247),rgb(50, 15, 204));
+        }
+        .card a{
+            position: relative;
+            text-decoration: none;
+            color: rgb(124, 10, 218);
+            left: 20%;
+            font-size: 30px;
+            font-weight: bold;
+        }
+        @media screen and (max-width:800px){
+            .container{
+                margin: 0;
+                padding: 0;
+            }
+            .card{
+                width: 100%;
+            }
+            .inside-icon i{
+                left: 20%;
+            }
+            .eye i{
+                margin-left: 55%;
+                margin-top: -11%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form id="form1" class="card">
+            <h3>Login Form</h3>
+                <div class="inside-icon">
+                    <input type="text" placeholder="Enter Username">
+                    <i class="far fa-user"></i>
+                </div>
+                <div class="inside-icon">
+                    <input type="password" placeholder="Enter password" id="pass">
+                    <i class="fas fa-lock"></i>
+                    <div class="eye">
+                        <i class="far fa-eye eye" onclick="Login()"></i>
+                    </div>
+                    
+                </div>
+                <div class="inside-icon">
+                    <input type="button" value="LOGIN" id="login">
+                </div>
+                <div class="inside-icon">
+                    <input type="button" value="Clear">
+                </div>
+                <a href="#" id="signup">Sign Up</a>
+            </form>
+    
+            <form id="form2" class="card">
+                <h3>Register Form</h3>
+                <div class="inside-icon">
+                    <input type="text" placeholder="Enter Username">
+                    <i class="far fa-user"></i>
+                </div>
+                <div class="inside-icon">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" placeholder="Enter password" id="newpass">
+                    <div class="eye">
+                        <i class="far fa-eye eye" onclick="NewPassword()"></i>
+                    </div>
+                </div>
+                <div class="inside-icon">
+                    <input type="password" placeholder="Re-enter Password" id="repass">
+                    <i class="fas fa-lock"></i>
+                    <div class="eye">
+                        <i class="far fa-eye eye" onclick="ReEnterPassword()"></i>
+                    </div>
+                </div>
+                <div class="inside-icon">
+                    <input type="button" value="Register" id="register">
+                </div>
+                <div class="inside-icon">
+                    <input type="button" value="Clear">
+                </div>
+                <a href="#" id="create">Login Here</a>
+            </form>
+    </div>
+
+        <script>
+            document.getElementById( 'signup' ).addEventListener( 'click', function( event ) {
+            document.getElementById( 'form2' ).className = 'card login-form';
+            document.getElementById( 'form1' ).className = 'card register-form';
+            }, false );
+
+        </script>
+        <script>    
+            document.getElementById( 'create' ).addEventListener( 'click', function( event ) {
+            document.getElementById( 'form2' ).className = 'card register-form';
+            document.getElementById( 'form1' ).className = 'card login-form';
+            }, false );
+
+            function Login(){
+                var temp = document.getElementById( 'pass');
+                if(temp.type == "password" ){
+                    temp.type = "text";
+                }
+                else{
+                    temp.type = "password";
+                }
+            }
+            function NewPassword(){
+                var temp = document.getElementById( 'newpass');
+                if(temp.type == "password" ){
+                    temp.type = "text";
+                }
+                else{
+                    temp.type = "password";
+                }
+            }
+            function ReEnterPassword(){
+                var temp = document.getElementById( 'repass');
+                if(temp.type == "password" ){
+                    temp.type = "text";
+                }
+                else{
+                    temp.type = "password";
+                }
+            }
+
+        </script>
+</body>
+</html>
